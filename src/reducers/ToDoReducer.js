@@ -1,7 +1,24 @@
 import { ADD_TODO, EDIT_TO_DO, COMPLETE_TO_DO } from '../actions/ToDoActions'
 
 const initialState = {
-    todos: []
+    todos: [{
+        name: 'first to do',
+        id: 0,
+        completed: false,
+        editing: false
+    },
+      {
+        name: 'second to do',
+        id: 1,
+        completed: false,
+        editing: false
+      },
+      {
+        name: 'third to do',
+        id: 2,
+        completed: false,
+        editing: false
+      }]
 }
 
 export default function toDoReducer(state = initialState, action) {

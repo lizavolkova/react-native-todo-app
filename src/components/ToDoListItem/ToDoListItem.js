@@ -16,11 +16,11 @@ class ToDoListItem extends React.Component {
                 <Text>TODO: {this.props.todo.id} {this.props.todo.name}</Text>
                 <Text>editing? {editing}</Text>
                 <Text>complete? {complete}</Text>
-                <Text onClick={this.props.editToDo.bind(this, this.props.todo.id)}>EDIT</Text>
+
             </View>
         );
     }
 }
 
-
+//<Text onClick={this.props.editToDo.bind(this, this.props.todo.id)}>EDIT</Text>
 export default ToDoListItem
