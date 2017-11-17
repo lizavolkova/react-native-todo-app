@@ -6,20 +6,29 @@ export function addToDo(todo) {
     };
 }
 
-export const EDIT_TO_DO = 'EDIT_TO_DO';
-export function editToDo(id) {
+export const SET_TO_DO_IN_PROGRESS = 'SET_TO_DO_IN_PROGRESS';
+export function setToDoInProgress(id) {
     return {
-        type: EDIT_TO_DO,
+        type: SET_TO_DO_IN_PROGRESS,
         id
     };
 }
 
 export const COMPLETE_TO_DO = 'COMPLETE_TO_DO';
-export function completeToDo(todo) {
+export function completeToDo(id) {
     return {
         type: COMPLETE_TO_DO,
         id
     };
 }
+
+export const SAVE_TO_DO = 'SAVE_TO_DO';
+export function saveToDo(todo) {
+  return {
+    type: SAVE_TO_DO,
+    todo
+  };
+}
+
 
 

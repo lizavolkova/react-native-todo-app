@@ -1,34 +1,50 @@
 import React from 'react';
 // import { View, Text, FlatList } from 'react-native';
 import { connect } from 'react-redux';
-import { editToDo } from '../../actions/ToDoActions'
+import { setToDoInProgress } from '../../actions/ToDoActions'
 // import ToDoListItem from '../ToDoListItem/ToDoListItem'
-import { List, ListItem, Thumbnail, Text, Body } from 'native-base';
+import { ListView } from 'react-native';
+import { Button, Icon, List, ListItem, Text ,Thumbnail, Body } from 'native-base';
 
 class ViewToDo extends React.Component {
-    editingToDo(id) {
-        console.log('EDITING!!');
-    }
+  constructor(props) {
+    super(props);
+    this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+    this.state = {
+      basic: true
+    };
+  }
 
-    render() {
-        const todos = this.props.todos.map((todo, index) => {
-              return (
-              <ListItem key={index} onClick={() => this.props.navigation.navigate('EditToDo')}>
-                  <Thumbnail square size={80} source={{ uri: 'http://www.placehold.it/100x100' }} />
-                  <Body>
-                  <Text>{todo.name}</Text>
-                  <Text note>Its time to build a difference . .</Text>
-                  </Body>
-              </ListItem>
-            )
-        });
+  deleteRow(secId, rowId, rowMap) {
 
-        return (
-            <List>
-              {todos}
-            </List>
-        );
-    }
+  }
+
+  render() {
+    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+    return (
+              <List
+                dataSource={this.ds.cloneWithRows(this.props.todos)}
+                renderRow={todo =>
+                  <ListItem onPress={() => this.props.navigation.navigate('EditToDo', {id: todo.id})}>
+                      <Thumbnail square size={80} source={{ uri: 'http://www.placehold.it/100x100' }} />
+                      <Body>
+                        <Text>{todo.name}</Text>
+                        <Text note>{todo.text}</Text>
+                      </Body>
+                  </ListItem>}
+                renderLeftHiddenRow={todo =>
+                  <Button full onPress={() => this.props.setToDoInProgress(todo.id)}>
+                      <Icon active name="ios-alarm" />
+                  </Button>}
+                renderRightHiddenRow={(todo, secId, rowId, rowMap) =>
+                  <Button full danger >
+                      <Icon active name="trash" />
+                  </Button>}
+                leftOpenValue={75}
+                rightOpenValue={-75}
+              />
+    );
+  }
 }
 
 
@@ -40,26 +56,11 @@ function mapStateToProps({toDoReducer}) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        editToDo(id) {
-            console.log(id)
-            dispatch(editToDo(id));
+      setToDoInProgress(id) {
+            dispatch(setToDoInProgress(id));
         }
     };
 }               
                 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ViewToDo)
-
-// <View >
-// <Text>VIEW TO DO LIST</Text>
-// <FlatList
-// data={this.props.todos}
-// renderItem={({item}) => <ToDoListItem todo={item} editToDo={this.editingToDo()}/>}
-// />
-// </View>
-
-//LOOP
-// <View>
-// <img src="http://www.placehold.it/100x100" alt=""/>
-//   <Text key={index}>{todo.name}</Text>
-// </View>

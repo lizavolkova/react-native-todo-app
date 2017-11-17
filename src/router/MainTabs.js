@@ -1,13 +1,29 @@
 import React from "react";
-import { TabNavigator } from 'react-navigation';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 import InProgressPage from '../pages/InProgressPage';
 import DonePage from '../pages/DonePage';
 import HomePage from '../pages/HomePage'
+import EditTodoPage from '../pages/EditTodoPage';
+import AddToDoPage from '../pages/AddToDoPage';
 import { Button, Text, Icon, Footer, FooterTab } from 'native-base';
+
+export const HomeEdit = StackNavigator({
+  HomeList: {
+    screen: HomePage
+  },
+  EditToDo: {
+    screen: EditTodoPage
+  },
+  AddToDo: {
+    screen: AddToDoPage
+  }
+});
 
 export const Tabs = TabNavigator(
   {
-    Home: { screen: HomePage },
+    Home: {
+      screen: HomeEdit
+    },
     InProgress: { screen: InProgressPage },
     Done: { screen: DonePage }
   },
