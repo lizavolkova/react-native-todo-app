@@ -25,6 +25,14 @@ class EditToDo extends React.Component {
     });
   }
 
+  updateText(text) {
+    const todo = {...this.state.todo}
+    todo.text = text.text;
+    this.setState({
+      todo
+    });
+  }
+
 
   render() {
     const { todo } = this.state;
@@ -46,7 +54,8 @@ class EditToDo extends React.Component {
           multiline={true}
           numberOfLines={3}
           style={{height: 100}}
-          value={todo.value}/>
+          value={todo.value}
+          onChangeText={(text) => this.updateText({text})}/>
         </Item>
 
         <Button full onPress={() => this.props.onCtaClick(this.state.todo)}>

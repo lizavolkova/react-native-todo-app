@@ -9,7 +9,7 @@ const initialState = {
         name: 'first to do',
         text: 'This is a description of the to do and what it is all about',
         id: 0,
-        completed: false,
+        completed: true,
         inProgress: false,
         image: 'http://www.placehold.it/100x100'
     },
@@ -67,14 +67,16 @@ export default function toDoReducer(state = initialState, action) {
                 todos
             }
         case COMPLETE_TO_DO:
-            // const todos = state.todos.map((todo) => {
-            //     return (todo.id === action.id)
-            //         ? {...todo, completed: !todo.completed}
-            //         : todo
-            // });
+            const todosToComplete = state.todos.map((todo) => {
+                return (todo.id === action.id)
+                    ? {...todo, completed: !todo.completed}
+                    : todo
+            });
 
+            console.log(todosToComplete);
             return {
-                ...state
+                ...state,
+                todos: todosToComplete
             }
         default:
             return state
