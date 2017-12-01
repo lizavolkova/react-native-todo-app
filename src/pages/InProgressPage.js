@@ -1,28 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AppTemplate from '../components/AppTemplate/AppTemplate';
-import { List, ListItem, Text } from 'native-base';
+import ToDoList from '../components/ToDoList/ToDoList';
 
 class InProgressPage extends React.Component {
   render() {
-    const toDoItems = this.props.todos.map((todo) => {
-      if (todo.inProgress) {
-        return (
-          <ListItem key={todo.id}>
-            <Text>{todo.name}</Text>
-          </ListItem>
-        );
-      }
-    })
+      const inProgressTodos = this.props.todos.filter((todo) => {
+          return todo.editing
+      });
 
     return (
-      <AppTemplate>
-        <Text>
-          In progress todos:
-        </Text>
-        <List>
-          {toDoItems}
-        </List>
+      <AppTemplate navigation={this.props.navigation}>
+          <ToDoList todos={inProgressTodos}></ToDoList>
       </AppTemplate>
     );
   }

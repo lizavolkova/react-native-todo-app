@@ -10,7 +10,7 @@ class DonePage extends React.Component {
       });
 
     return (
-      <AppTemplate>
+      <AppTemplate navigation={this.props.navigation}>
         <ToDoList todos={doneTodos}></ToDoList>
       </AppTemplate>
     );

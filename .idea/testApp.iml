@@ -14,5 +14,6 @@
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="library" name="testApp node_modules" level="project" />
   </component>
 </module>

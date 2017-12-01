@@ -15,7 +15,7 @@ class AddToDoPage extends React.Component {
 
   render() {
     return (
-      <AppTemplate>
+      <AppTemplate navigation={this.props.navigation}>
         <EditToDo onCtaClick={this.addToDoAndReturnHome.bind(this)}/>
       </AppTemplate>
     );

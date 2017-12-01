@@ -20,14 +20,6 @@ const initialState = {
         completed: false,
         inProgress: false,
         image: 'http://www.placehold.it/100x100'
-      },
-      {
-        name: 'third to do',
-        text: 'This is a description of the to do and what it is all about',
-        id: 2,
-        completed: false,
-        inProgress: false,
-        image: 'http://www.placehold.it/100x100'
       }]
 }
 
@@ -39,7 +31,7 @@ export default function toDoReducer(state = initialState, action) {
                 todos: state.todos.concat({
                     name: action.todo.name || '',
                     text: action.todo.text || '',
-                    image: action.todo.image || '',
+                    image: action.todo.image || 'http://www.placehold.it/100x100',
                     id: state.todos.length + 1,
                     completed: false,
                     editing: false
@@ -58,7 +50,7 @@ export default function toDoReducer(state = initialState, action) {
         case SET_TO_DO_IN_PROGRESS:
             const todos = state.todos.map((todo) => {
                 return (todo.id === action.id)
-                    ? {...todo, inProgress: !todo.inProgress}
+                    ? {...todo, editing: !todo.editing}
                     : todo
             });
 

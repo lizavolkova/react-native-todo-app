@@ -7,7 +7,7 @@ import EditTodoPage from '../pages/EditTodoPage';
 import AddToDoPage from '../pages/AddToDoPage';
 import { Button, Text, Icon, Footer, FooterTab } from 'native-base';
 
-export const HomeEdit = StackNavigator({
+export const HomeScreen = StackNavigator({
   HomeList: {
     screen: HomePage
   },
@@ -22,10 +22,21 @@ export const HomeEdit = StackNavigator({
 export const Tabs = TabNavigator(
   {
     Home: {
-      screen: HomeEdit
+      screen: HomeScreen,
+      navigationOptions: { title: 'Home' }
     },
-    InProgress: { screen: InProgressPage },
-    Done: { screen: DonePage }
+    InProgress: {
+      screen: InProgressPage,
+      navigationOptions: {
+        title: 'In Progress Todos'
+      }
+    },
+    Done: {
+      screen: DonePage,
+      navigationOptions: {
+        title: 'Complete Todos'
+      }
+    }
   },
   {
     tabBarPosition: 'bottom',

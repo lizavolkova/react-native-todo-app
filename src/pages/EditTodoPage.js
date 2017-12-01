@@ -24,7 +24,7 @@ class EditToDoPage extends React.Component {
 
   render() {
     return (
-      <AppTemplate>
+      <AppTemplate navigation={this.props.navigation}>
         <EditToDo
           todo={this.state.todo}
           onCtaClick={this.saveToDoAndGoHome.bind(this)} />

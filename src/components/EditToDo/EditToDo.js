@@ -37,11 +37,21 @@ class EditToDo extends React.Component {
   render() {
     const { todo } = this.state;
 
+    const labelStyle = {
+      color: '#ffffff',
+      opacity: 0.8
+    };
+
+    const inputStyle = {
+      color: '#ffffff'
+    };
+
     return (
       <Form>
         <Item stackedLabel>
-          <Label>Title</Label>
+          <Label style={labelStyle}>Title</Label>
           <Input
+            style={inputStyle}
             stackedLabel
             last
             value={todo.name}
@@ -49,13 +59,14 @@ class EditToDo extends React.Component {
         </Item>
 
         <Item stackedLabel last>
-          <Label>Text</Label>
+          <Label style={labelStyle}>Text</Label>
           <Input
-          multiline={true}
-          numberOfLines={3}
-          style={{height: 100}}
-          value={todo.value}
-          onChangeText={(text) => this.updateText({text})}/>
+              style={inputStyle}
+              multiline={true}
+              numberOfLines={3}
+              style={{height: 100}}
+              value={todo.value}
+              onChangeText={(text) => this.updateText({text})}/>
         </Item>
 
         <Button full onPress={() => this.props.onCtaClick(this.state.todo)}>

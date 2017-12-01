@@ -11,15 +11,47 @@ class HomePage extends React.Component {
         }).length;
     }
 
+    getInProgressToDos() {
+        return this.props.todos.filter((todo) => {
+            return todo.editing
+        }).length;
+    }
+
     render() {
         return (
           <AppTemplate navigation={this.props.navigation}>
               <Grid>
-                  <Col style={{ backgroundColor: '#635DB7', height: 100 }}>
-                      <Text>{this.getDoneToDos()}</Text>
-                      <Text>COMPLETED</Text>
+                  <Col
+                      style={{
+                      backgroundColor: 'transparent',
+                      height: 100,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderRightColor: '#ffffff',
+                      borderStyle: 'solid',
+                      borderRightWidth: 1
+                      }}>
+                      <Text style={{
+                        color: '#ffffff',
+                        fontWeight: 'bold'
+                        }}>{this.getDoneToDos()}</Text>
+                      <Text style={{
+                        color: '#ffffff',
+                        opacity: 0.8}}>COMPLETED</Text>
                   </Col>
-                  <Col style={{ backgroundColor: '#00CE9F', height: 100 }}></Col>
+                  <Col style={{
+                      backgroundColor: 'transparent',
+                      height: 100,
+                      alignItems: 'center',
+                      justifyContent: 'center'}}>
+                      <Text style={{
+                        color: '#ffffff',
+                        fontWeight: 'bold'
+                        }}>{this.getInProgressToDos()}</Text>
+                      <Text style={{
+                        color: '#ffffff',
+                        opacity: 0.8}}>IN PROGRESS</Text>
+                  </Col>
               </Grid>
 
               <Grid>
