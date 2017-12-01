@@ -37,15 +37,18 @@ class ViewToDo extends React.Component {
               }
             renderRightHiddenRow={(todo, secId, rowId, rowMap) =>
             <View style={{flexDirection: "row"}}>
-                <Button full success onPress={() => this.props.completeToDo(todo.id)} >
-                      <Icon active name="ios-checkmark" />
+                  <Button full success onPress={() => this.props.completeToDo(todo.id)} >
+                      <Icon active name="ios-alarm" />
+                  </Button>
+                  <Button full info onPress={() => this.props.setToDoInProgress(todo.id)} >
+                    <Icon active name="ios-checkmark" />
                   </Button>
                   <Button full danger >
                       <Icon active name="trash" />
                   </Button>
             </View>}
             leftOpenValue={0}
-            rightOpenValue={-100}
+            rightOpenValue={-250}
           />
     );
   }

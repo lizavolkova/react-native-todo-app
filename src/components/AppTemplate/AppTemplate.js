@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Fab, View } from 'native-base';
+import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, Fab, View, Image } from 'native-base';
 
 export default class AppTemplate extends Component {
   goToAddPage() {
@@ -18,6 +18,18 @@ export default class AppTemplate extends Component {
           <Right />
         </Header>
         <Content>
+          <Image
+            style={{
+              backgroundColor: '#ccc',
+              flex: 1,
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              justifyContent: 'center',
+            }}
+            resizeMode='cover'
+            blurRadius={1}
+            source={require('../../assets/images/autumn-background.png')} />
           {this.props.children}
         </Content>
         <View>
